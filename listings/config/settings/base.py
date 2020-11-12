@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
-from boto.s3.connection import S3Connection
 
 from dotenv import load_dotenv
 
@@ -27,7 +26,7 @@ if os.path.isfile(ENV_PATH):
     SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 else:
     # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = S3Connection(os.environ['DJANGO_SECRET_KEY'])
+    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
