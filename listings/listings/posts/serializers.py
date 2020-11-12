@@ -1,8 +1,16 @@
 from rest_framework import serializers
-from .models import Post
+from .models import Language, Post, Tool
 
+class LanguageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Language
+        fields = ['name']
 
 class PostSerializer(serializers.ModelSerializer):
+    languages = serializers.StringRelatedField(many=True)
+    tools = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Post
         fields = (
@@ -19,6 +27,11 @@ class PostSerializer(serializers.ModelSerializer):
             'languages',
             'tools',
         )
-    
-    
 
+
+class ToolSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tool
+        fields = ['name']
+
+        
