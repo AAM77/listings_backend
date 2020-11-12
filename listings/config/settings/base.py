@@ -37,7 +37,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'listings-backend.herokuapp.com',
-    'https://static-job-listings-frontend-git-main.aam77.vercel.app'
+    'static-job-listings-frontend-git-main.aam77.vercel.app'
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 
