@@ -16,14 +16,11 @@ class Post(models.Model):
     objects = models.Manager()
 
     class Meta:
-        verbose_name = 'listing'
-        verbose_name_plural = 'listings'
+        verbose_name = 'post'
+        verbose_name_plural = 'posts'
 
     def __str__(self):
         return f"{self.company}, {self.position}"
-
-    # def get_absolute_url(self):
-    #     return reverse("listing_detail", args=[str(self.id)])
 
 
 class Tool(models.Model):
@@ -31,6 +28,7 @@ class Tool(models.Model):
     listing = models.ManyToManyField(Post, blank=True, related_name='tools')
 
     class Meta:
+        ordering = ['name']
         verbose_name = 'tool'
         verbose_name_plural = 'tools'
     
@@ -43,6 +41,7 @@ class Language(models.Model):
     listing = models.ManyToManyField(Post, blank=True, related_name='languages')
 
     class Meta:
+        ordering = ['name']
         verbose_name = 'language'
         verbose_name_plural = 'languages'
     
