@@ -19,7 +19,8 @@ from dotenv import load_dotenv
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent.parent
 APPS_DIR = ROOT_DIR / "listings/listings"
 ENV_PATH = ROOT_DIR / ".env"
-load_dotenv(dotenv_path=ENV_PATH)
+if os.path.isfile(ENV_PATH):
+    load_dotenv(dotenv_path=ENV_PATH)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -70,6 +71,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "listings.config.urls"
