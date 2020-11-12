@@ -1,8 +1,9 @@
+from django.core.wsgi import get_wsgi_application
+
+from whitenoise.django import DjangoWhiteNoise
+
 from .base import *
 
-STATIC_ROOT = APPS_DIR / 'static'
-STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(APPS_DIR, 'static')
-)
+application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
